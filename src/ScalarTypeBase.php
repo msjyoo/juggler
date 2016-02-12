@@ -17,6 +17,10 @@ abstract class ScalarTypeBase extends Type
 
     public function juggle(Type $type)
     {
+        /*
+         * This is a predicate to determine whether the CURRENT type (the child class)
+         * can be juggled into the Type $type.
+         */
         $predicate = function (Type $element) {
             return array_any($this->getAllowedJuggleTypes(),
                 function (Type $value, $index, $collection) use ($element) {
